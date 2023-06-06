@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:convert="clr-namespace:WareHouse_MAUI.Converters"
+             xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             x:Class="WareHouse_MAUI.Views.Settings"
+             BackgroundColor="{DynamicResource HighBackground}">
+
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="8*"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="0"
+           Text="{translate:Translate Settings}"
+               HorizontalOptions="Center"
+               Margin="0,20,0,0"
+               FontFamily="Verdana"
+               TextColor="Black"
+               FontSize="20"/>
+
+    <Button FontFamily="Verdana"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Background="{DynamicResource s_btnback}" 
+                BorderColor="Transparent"
+                Margin="20,0,0,5"
+                Padding="5"
+                TextColor="{DynamicResource White}"
+                Command="{Binding BackBtn}"
+                Text="{translate:Translate Back}"/>
+
+    <StackLayout Grid.Row="1"
+                 Orientation="Vertical"
+                    HorizontalOptions="Start"
+                    Margin="30,0,0,0">
+
+      <Label Margin="0,0,0,5" 
+                   Text="{translate:Translate ChooseLang}"
+                   FontFamily="Verdana"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   />
+
+      <RadioButton Content="English" 
+                         IsChecked="{Binding IsEnglish}" 
+                         />
+
+      <RadioButton Content="Українська"
+                         IsChecked="{Binding IsUkrainian}"
+                         Margin="0,10,0,0"/>
+
+    </StackLayout>
+  </Grid>
+</ContentPage>

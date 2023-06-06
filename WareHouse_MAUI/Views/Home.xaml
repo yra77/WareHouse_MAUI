@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:convert="clr-namespace:WareHouse_MAUI.Converters"
+             xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             x:Class="WareHouse_MAUI.Views.Home"
+             BackgroundColor="{DynamicResource HighBackground}">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <convert:ImageByte x:Key="ImageByte"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+
+  <Grid IgnoreSafeArea="{OnPlatform Android=False, iOS=True}">
+
+
+    <!--Menu-->
+    <Grid HorizontalOptions="Fill"
+          VerticalOptions="Fill"
+          BackgroundColor="{DynamicResource h_HamburgerBackground}"
+          RowDefinitions="1*,1*,1*,4*"
+          ColumnDefinitions="1*,1*">
+
+
+      <Frame Grid.Column="0"
+               Grid.Row="1"
+               Margin="0,0,0,0"
+               Padding="0"
+               CornerRadius="0"
+               HeightRequest="80"
+               WidthRequest="80"
+               VerticalOptions="Start"
+               HorizontalOptions="Center"
+               BackgroundColor="{DynamicResource h_menu_frameImage_Background}">
+
+        <ImageButton Aspect="Fill"
+                     Source="{Binding PhotoPath, Converter={StaticResource ImageByte}}"/>
+
+      </Frame>
+
+
+      <Label Grid.Column="0"
+               Grid.Row="2"
+               Text="{Binding Name}"
+               TextColor="{DynamicResource h_menu_Label}"
+               FontAttributes="Bold"
+               FontFamily="OpenSansBold"
+               FontSize="16"
+               HorizontalOptions="Center"/>
+
+
+      <VerticalStackLayout Grid.Column="0"
+                           Grid.Row="3"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start"
+                           Spacing="15">
+
+        <Button Text="{translate:Translate Account}"
+                CharacterSpacing="2"
+                FontFamily="OpenSansBold"
+                FontSize="14"
+                HorizontalOptions="Start"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                TextColor="{DynamicResource h_menu_button_Text}"
+                Command="{Binding Account}"/>
+
+        <Line Stroke="{DynamicResource h_menu_line}"
+              StrokeThickness="1"
+              WidthRequest="300"
+              X1="20" X2="300"/>
+
+        <Button Text="{Binding LogoutText}"
+                CharacterSpacing="1"
+                FontFamily="OpenSansBold"
+                FontSize="12"
+                ImageSource="signout.png"
+                HorizontalOptions="Start"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                TextColor="{DynamicResource h_menu_button_Text}"
+                Command="{Binding Logout}"/>
+
+      </VerticalStackLayout>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding HamburgerClick}"/>
+      </Grid.GestureRecognizers>
+      
+    </Grid>
+
+
+    <!--Base content-->
+    <Grid BackgroundColor="{DynamicResource HighBackground}"
+          TranslationX="{Binding TraslateX}"
+          IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+          Scale="{Binding ScaleBaseContent}"
+          Rotation="{Binding RotateBaseContent}"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="1*,6*,1*">
+
+      <Grid Grid.Row="0"
+            VerticalOptions="Fill"
+            BackgroundColor="{DynamicResource h_basecontent_background}">
+
+         
+
+      </Grid>
+
+
+      <Grid Grid.Row="1"
+            VerticalOptions="Center"
+            BackgroundColor="{DynamicResource h_basecontent_background}">
+
+        <ContentView prism:RegionManager.RegionName="QrCode_Region"/>
+
+      </Grid>
+
+      
+      <!--Tab menu-->
+      <Grid Grid.Row="2"
+            VerticalOptions="FillAndExpand"
+            IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+            HorizontalOptions="Fill"
+            Margin="0,0,0,0"
+            ColumnDefinitions="1*,1*,1*"
+            Background="{DynamicResource h_tabmenu_background}">
+
+
+        <Button Grid.Column="0"
+                 ImageSource="icon_hamburger.png"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"
+                 Margin="20,0,0,0"
+                 Command="{Binding HamburgerClick}"
+                 BackgroundColor="{DynamicResource h_tabmenu_button_background}"/>
+
+        <Button ImageSource="icon_qrcode.png"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Command="{Binding ScanQrCodeClick}"
+                BackgroundColor="{DynamicResource h_tabmenu_button_background}"/>
+
+        <Button Grid.Column="2"
+                ImageSource="settings.png"
+                BackgroundColor="{DynamicResource h_tabmenu_button_background}"
+                VerticalOptions="Center"
+                Margin="0,0,0,0"
+                Command="{Binding SettingsClick}"
+                HorizontalOptions="EndAndExpand"/>
+
+      </Grid>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+      </Grid.GestureRecognizers>
+    </Grid>
+
+    
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+      </Grid.GestureRecognizers>
+    </Grid>
+
+
+</ContentPage>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:resource="clr-namespace:WareHouse_MAUI.Resources.Strings"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             x:Class="WareHouse_MAUI.Views.MainPage"
+             BackgroundColor="{DynamicResource HighBackground}">
+
+  <Grid HorizontalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+
+    
+      <Label Grid.Row="0"
+             Text="{Binding HighText}"
+           TextColor="{DynamicResource m_HighText}"
+           FontFamily="OpenSansSemibold"
+           VerticalOptions="End"
+           FontSize="18"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center"
+           LineBreakMode="WordWrap"
+           FontAttributes="Bold"/>
+  
+    <StackLayout Grid.Row="2"
+                 HorizontalOptions="Fill"
+                 Margin="20,0,20,0">
+
+      <Label HorizontalOptions="StartAndExpand"
+             Margin="20,0,0,5"
+             FontAttributes="Bold"
+             Text="{Binding EmailText}"
+             TextColor="{DynamicResource m_secondLabel}" 
+             FontSize="14"
+             FontFamily="OpenSansSemibold"/>
+
+      <Frame Padding="{OnPlatform Android='10,0,10,0', iOS='10,8,10,8'}"
+             HasShadow="False"
+             CornerRadius="50"
+             BorderColor="{Binding EmailBorderColor}"
+             BackgroundColor="{DynamicResource m_entryframeBackground}">
+
+        <Entry Keyboard="Email"
+                 Text="{Binding Email}"
+                 Placeholder="aaaa@gmail.com"
+                 Margin="15,0,0,0"
+                 BackgroundColor="{DynamicResource m_entryBackground}"
+                 PlaceholderColor="{DynamicResource m_placeholder}"
+                 FontSize="16"
+                 FontFamily="OpenSansRegular"
+                 ReturnType="Done"/>
+      </Frame>
+
+      <Label Text="{Binding ErrorEmailText}"
+             FontSize="11"
+             HorizontalOptions="Center" 
+             TextColor="{Binding EmailBorderColor}"/>
+
+    </StackLayout>
+
+    <StackLayout Grid.Row="3"
+                 HorizontalOptions="Fill"
+                 Margin="20,0,20,0">
+
+      <Label HorizontalOptions="StartAndExpand"
+             Margin="20,0,0,5"
+             FontAttributes="Bold"
+             Text="{Binding PassText}"
+             TextColor="{DynamicResource m_secondLabel}" 
+             FontSize="14"
+             FontFamily="OpenSansSemibold"/>
+
+      <Frame Padding="{OnPlatform Android='10,0,10,0', iOS='10,8,10,8'}"
+             HasShadow="False"
+             CornerRadius="50"
+             BorderColor="{Binding PassBorderColor}"
+             BackgroundColor="{DynamicResource m_entryframeBackground}">
+
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+          </Grid.ColumnDefinitions>
+
+          <Entry Keyboard="Text"
+                 Text="{Binding Password}"
+                 Placeholder="Aaaaaaaa1"
+                 Margin="15,0,0,0"
+                 ReturnType="Done"
+                 BackgroundColor="{DynamicResource m_entryBackground}"
+                 PlaceholderColor="{DynamicResource m_placeholder}" 
+                 IsPassword="{Binding IsVisiblePassword}"
+                 FontSize="16"
+                 FontFamily="OpenSansRegular"/>
+
+          <ImageButton Source="{Binding ImagePassword}"
+                       BackgroundColor="{DynamicResource ImageBackground}" 
+                       Scale="0.5"
+                       Grid.Column="1"
+                       Command="{Binding Btn_IsVisiblePassword}" 
+                       WidthRequest="50"
+                       Aspect="AspectFit"/>
+        </Grid>
+      </Frame>
+
+      <Label Text="{Binding ErrorPassText}"
+             FontSize="11"
+             HorizontalOptions="Center" 
+             TextColor="{Binding PassBorderColor}"/>
+
+    </StackLayout>
+
+    <Button Grid.Row="5"
+            Text="Ok"
+            TextColor="{DynamicResource m_buttontext}"
+            FontFamily="OpenSansSemibold"
+            VerticalOptions="Start"
+            CornerRadius="50"
+            Margin="20,0,20,0"
+            FontSize="18"
+            BackgroundColor="{Binding Color_OkBtn}"
+            HorizontalOptions="Fill"
+            IsEnabled="False"
+            Command="{Binding SignInCommand}"/>
+
+  
+    <ActivityIndicator Grid.Row="5"
+                           Scale="0.7"
+                           IsVisible="{Binding IsVisibleIndicator}" 
+                           IsRunning="{Binding IsVisibleIndicator}" 
+                           Color="{DynamicResource ActivityIndicator}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+
+    <Grid.GestureRecognizers>
+      <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+    </Grid.GestureRecognizers>
+  </Grid>
+
+
+</ContentPage>

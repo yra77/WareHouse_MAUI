@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:gv="clr-namespace:BarcodeScanner.Mobile;assembly=BarcodeScanner.Mobile.Maui"
+             xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             x:Class="WareHouse_MAUI.Views.Regions.QrCodeRegion"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="Automatic">
+
+
+  <Grid RowDefinitions="6*,1*">
+  <!--VirbationOnDetected: Indicate the device will vibrate or not when detected barcode, default is True
+         TorchOn: Indicate the torch will on or not when the view appear, default is False
+         IsScanning : Indicate whether the device will start scanning after it is opened, default is True
+         RequestedFPS: Affect Android only, remove it if you want a default value (https://developers.google.com/android/reference/com/google/android/gms/vision/CameraSource.Builder.html#public-camerasource.builder-setrequestedfps-float-fps)
+         ScanInterval: Scan interval for iOS, default is 500ms and the minimum is 100ms, please be reminded that double scanning may be occurred if it is too small
+         -->
+    <gv:CameraView Grid.Row="0"
+                 HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Start" 
+                       OnDetectedCommand="{Binding DetectBarCode}"
+                       TorchOn="{Binding IsOnTorch, Mode=TwoWay}"
+                       VibrationOnDetected="False"
+                       ScanInterval="50"
+                       IsScanning="{Binding IsScanning, Mode=TwoWay}"
+                       />
+
+    <Label Grid.Row="0"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           TextColor="{DynamicResource h_qrTextResult}"
+           FontSize="12"
+           Text="{Binding QrCodeResult}"/>
+
+    <Grid ColumnDefinitions="1*,1*"
+          Grid.Row="1"
+          VerticalOptions="EndAndExpand"
+          HorizontalOptions="FillAndExpand">
+
+      <controls:MyButton Grid.Column="0"
+                         Text="{translate:Translate Torch}"
+                         HorizontalOptions="Center"                        
+                         Command="{Binding IsTorchBtn}"/>
+
+      <controls:MyButton Grid.Column="1"
+                         Text="{translate:Translate Scanning}"
+                         PressedState="{Binding IsScanning, Mode=TwoWay}"
+                         HorizontalOptions="Center"
+                         Command="{Binding IsScanningBtn}"/>
+    </Grid>
+  
+  </Grid>
+</ContentView>
