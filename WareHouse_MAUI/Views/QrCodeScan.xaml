@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WareHouse_MAUI.Views.QrCodeScan"
+             xmlns:convert="clr-namespace:WareHouse_MAUI.Converters"
+             xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             xmlns:prism="http://prismlibrary.com"
+             BackgroundColor="{DynamicResource HighBackground}">
+
+
+ 
+    <Grid BackgroundColor="{DynamicResource HighBackground}"
+          TranslationX="{Binding TraslateX}"
+          IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+          Scale="{Binding ScaleBaseContent}"
+          Rotation="{Binding RotateBaseContent}"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="1*,6*,1*">
+
+      <Grid Grid.Row="0"
+            VerticalOptions="Fill"
+            BackgroundColor="{DynamicResource h_basecontent_background}">
+
+
+
+      </Grid>
+
+
+      <Grid Grid.Row="1"
+            VerticalOptions="Center"
+            BackgroundColor="{DynamicResource h_basecontent_background}">
+
+        <ContentView prism:RegionManager.RegionName="QrCode_Region"/>
+
+      </Grid>
+
+
+      <!--Tab menu-->
+    <Grid Grid.Row="2"
+            VerticalOptions="FillAndExpand"
+            IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+            HorizontalOptions="Fill"
+            Margin="0,0,0,0"
+            ColumnDefinitions="1*,1*,1*"
+            Background="{DynamicResource h_tabmenu_background}">
+
+      <Button Grid.Column="0"
+                 Text="{translate:Translate Back}"
+                 TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"
+                 Margin="20,0,0,0"
+                 Command="{Binding BackClick}"
+                 BackgroundColor="{DynamicResource h_menu_buttonBorder_background}"/>
+
+        <Button ImageSource="icon_qrcode.png"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Command="{Binding ScanQrCodeClick}"
+                BackgroundColor="{DynamicResource h_tabmenu_button_background}"/>
+
+        <Button Grid.Column="2"
+                ImageSource="settings.png"
+                BackgroundColor="{DynamicResource h_tabmenu_button_background}"
+                VerticalOptions="Center"
+                Margin="0,0,0,0"
+                Command="{Binding SettingsClick}"
+                HorizontalOptions="EndAndExpand"/>
+
+      </Grid>
+
+    <Grid.GestureRecognizers>
+      <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+    </Grid.GestureRecognizers>
+
+  </Grid>
+</ContentPage>

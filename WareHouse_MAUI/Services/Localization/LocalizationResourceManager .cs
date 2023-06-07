@@ -35,6 +35,6 @@ namespace WareHouse_MAUI.Services.Localization
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

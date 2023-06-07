@@ -318,6 +318,9 @@
   <data name="Scanning" xml:space="preserve">
     <value>Scanning</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="SecondName" xml:space="preserve">
     <value>Second name</value>
   </data>

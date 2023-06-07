@@ -664,6 +664,15 @@ namespace WareHouse_MAUI.Resources.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Search.
+        /// </summary>
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Second name.
         /// </summary>
         internal static string SecondName {

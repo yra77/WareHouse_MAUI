@@ -1,9 +1,9 @@
 ﻿
 
+using WareHouse_MAUI.Controls;
 using BarcodeScanner.Mobile;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-using WareHouse_MAUI.Controls;
-using WareHouse_MAUI.Services.AndroidMedia;
+
 
 namespace WareHouse_MAUI
 {
@@ -18,7 +18,6 @@ namespace WareHouse_MAUI
                 {
 #if ANDROID
                     handlers.AddCompatibilityRenderer(typeof(MyEntry), typeof(WareHouse_MAUI.Platforms.Android.Services.My_Entry));
-                    handlers.AddCompatibilityRenderer(typeof(MySearch), typeof(WareHouse_MAUI.Platforms.Android.Services.My_Search));
 #endif
                 })
                 .ConfigureFonts(fonts =>

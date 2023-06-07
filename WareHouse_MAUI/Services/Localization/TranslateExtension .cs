@@ -5,7 +5,7 @@ namespace WareHouse_MAUI.Services.Localization
     [ContentProperty(nameof(Name))]
     internal class TranslateExtension : IMarkupExtension<BindingBase>
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public BindingBase ProvideValue(IServiceProvider serviceProvider)
         {

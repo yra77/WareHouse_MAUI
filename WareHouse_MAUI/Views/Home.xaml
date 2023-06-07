@@ -105,18 +105,75 @@
             VerticalOptions="Fill"
             BackgroundColor="{DynamicResource h_basecontent_background}">
 
-         
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="{translate:Translate Tables}"
+               TextColor="{DynamicResource h_menu_buttonTextBlack}"
+               FontAttributes="Bold"
+               FontSize="Medium"/>
 
       </Grid>
 
 
-      <Grid Grid.Row="1"
-            VerticalOptions="Center"
+      <VerticalStackLayout Grid.Row="1"
+            VerticalOptions="Fill"
             BackgroundColor="{DynamicResource h_basecontent_background}">
 
-        <ContentView prism:RegionManager.RegionName="QrCode_Region"/>
+        <Button Text="{translate:Translate Products}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="Products"/>
 
-      </Grid>
+        <Button Text="{translate:Translate Shippers}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="Shippers"/>
+
+        <Button Text="{translate:Translate Clients}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="Clients"/>
+
+        <Button Text="{translate:Translate Employees}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="Employees"/>
+
+        <Button Text="{translate:Translate Category}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="Categorys"/>
+
+        <Button Text="{translate:Translate Type}"
+                TextColor="{DynamicResource h_menu_buttonTextBlack}"
+                FontSize="Body"
+                BackgroundColor="{DynamicResource h_menu_button_background}"
+                BorderColor="{DynamicResource h_menu_buttonBorder_background}"
+                HorizontalOptions="Start"
+                Command="{Binding GoToTable}"
+                CommandParameter="ProductsType"/>
+
+      </VerticalStackLayout>
 
       
       <!--Tab menu-->

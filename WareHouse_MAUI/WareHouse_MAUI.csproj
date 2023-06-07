@@ -120,6 +120,12 @@
     <MauiXaml Update="Views\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Views\Products.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\QrCodeScan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\Regions\QrCodeRegion.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

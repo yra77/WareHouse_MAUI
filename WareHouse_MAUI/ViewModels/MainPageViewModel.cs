@@ -335,7 +335,7 @@ namespace WareHouse_MAUI.ViewModels
 
             if (_stateNethwork)
             {
-                _ = Task.Run(async () =>
+                _ = Task.Run( () =>
                 {
                     if (_staticList == null || _staticList.Count == 0)
                     {
@@ -379,7 +379,7 @@ namespace WareHouse_MAUI.ViewModels
 
             if (_stateNethwork)
             {
-                _ = Task.Run(async () =>
+                _ = Task.Run( () =>
                 {
                     if (_staticList == null || _staticList.Count == 0)
                     {

@@ -10,6 +10,7 @@ using WareHouse_MAUI.Services.Repository;
 using WareHouse_MAUI.Services.AccessRoles;
 using WareHouse_MAUI.Services.AndroidMedia;
 using WareHouse_MAUI.Services.Localization;
+using WareHouse_MAUI.Services.DataServices;
 using WareHouse_MAUI.Services.VerifyService;
 using WareHouse_MAUI.Services.SettingsManager;
 
@@ -21,20 +22,22 @@ namespace WareHouse_MAUI
         public static void Configure(PrismAppBuilder builder)
         {
             builder.RegisterTypes(RegisterTypes)
-                    .OnAppStart("NavigationPage/MainPage");
+                    .OnAppStart("MainPage/");
         }
 
         private static void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>()
                              .RegisterForNavigation<Home, HomeViewModel>()
+                             .RegisterForNavigation<QrCodeScan, QrCodeScanViewModel>()
                              .RegisterForNavigation<Settings, SettingsViewModel>()
+                             .RegisterForNavigation<Products, ProductsViewModel>()
 
                          .RegisterInstance(SemanticScreenReader.Default);
 
 
             //Regions
-            containerRegistry.RegisterForRegionNavigation<QrCodeRegion, HomeViewModel>();
+            containerRegistry.RegisterForRegionNavigation<QrCodeRegion, QrCodeScanViewModel>();
 
 
             //Services
@@ -42,6 +45,7 @@ namespace WareHouse_MAUI
                              .RegisterSingleton<ISettingsManager, SettingsManager>()
                              .RegisterSingleton<IAuth, Auth>()
                              .RegisterSingleton<IRepository, Repository>()
+                             .RegisterSingleton<IDataService, DataService>()
                              .RegisterSingleton<IAccessRole, AccessRole>()
                              .RegisterSingleton<ILocalizationManager, LocalizationResourceManager>();
 

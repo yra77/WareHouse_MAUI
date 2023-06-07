@@ -318,6 +318,9 @@
   <data name="Scanning" xml:space="preserve">
     <value>Сканування</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
   <data name="SecondName" xml:space="preserve">
     <value>Фамілія</value>
   </data>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WareHouse_MAUI.Views.Products"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:convert="clr-namespace:WareHouse_MAUI.Converters"
+             xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
+             xmlns:controls ="clr-namespace:WareHouse_MAUI.Controls"
+             BackgroundColor="{DynamicResource HighBackground}">
+
+
+  <Grid BackgroundColor="{DynamicResource HighBackground}"
+          TranslationX="{Binding TraslateX}"
+          IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+          Scale="{Binding ScaleBaseContent}"
+          Rotation="{Binding RotateBaseContent}"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="1*,8*,1*">
+
+    <Grid Grid.Row="0"
+          VerticalOptions="Fill"
+          BackgroundColor="{DynamicResource h_basecontent_background}"
+          RowDefinitions="1*,1*">
+
+      <Label Grid.Row="0"
+           Text="{translate:Translate Products}"
+           HorizontalOptions="Center"
+           VerticalOptions="Start"
+           TextColor="Black"
+           FontAttributes="Bold"
+           FontSize="Medium"/>
+
+      <Frame Grid.Row="1"
+             Padding="0"
+             HorizontalOptions="Center"
+             BorderColor="Transparent"
+             CornerRadius="0">
+      <SearchBar Text="{Binding SearchText}"
+                 Placeholder="{translate:Translate Search}"
+                 PlaceholderColor="LightGray"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"
+                 BackgroundColor="{DynamicResource White}"
+                 Keyboard="Text" 
+                 CancelButtonColor="{DynamicResource Gray200}"
+                 FontSize="14"
+                 FontFamily="OpenSansRegular"/>
+      </Frame>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+      </Grid.GestureRecognizers>
+    </Grid>
+
+
+    <Grid Grid.Row="1"
+          VerticalOptions="Fill"
+          BackgroundColor="{DynamicResource h_basecontent_background}">
+
+      <ListView Margin="10,10,10,10"
+              x:Name="listview"
+              HorizontalOptions="Fill"
+              IsPullToRefreshEnabled="True"
+              VerticalOptions="FillAndExpand"
+              SelectionMode="Single" 
+              SeparatorVisibility="Default"
+              SelectedItem="{Binding SelectedItem}"
+              RefreshControlColor="{DynamicResource ActivityIndicator}"
+              RefreshCommand="{Binding RefreshList}"
+              IsRefreshing="{Binding IsRefresh}"
+              ItemsSource="{Binding ProductList}">
+
+        <!--Header-->
+        <ListView.Header>
+          
+          <Grid ColumnDefinitions="1*,2*,3*"
+              Margin="0,0,0,20">
+            
+            <Frame Grid.Column="0"
+                 Padding="0"
+                 CornerRadius="0"
+                 BorderColor="Black"
+                 BackgroundColor="Transparent">
+              <Label Text="Id" HorizontalOptions="Center" FontAttributes="Bold"/>
+              <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Column}"
+                                      CommandParameter="Id"/>
+              </Frame.GestureRecognizers>
+            </Frame>
+            
+            <Frame Grid.Column="1"
+                 Padding="0"
+                 CornerRadius="0"
+                 BorderColor="Black"
+                 BackgroundColor="Transparent">
+              <Label Text="{translate:Translate Name}" HorizontalOptions="Center" FontAttributes="Bold"/>
+              <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Column}"
+                                      CommandParameter="Name"/>
+              </Frame.GestureRecognizers>
+            </Frame>
+              
+            <Frame Grid.Column="2"
+                 Padding="0"
+                 CornerRadius="0"
+                 BorderColor="Black"
+                 BackgroundColor="Transparent">
+              <Label Text="{translate:Translate Code}" HorizontalOptions="Center" FontAttributes="Bold"/>
+              <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Column}"
+                                      CommandParameter="Code"/>
+              </Frame.GestureRecognizers>
+            </Frame>
+              
+          </Grid>
+        </ListView.Header>
+
+        <!--Base content-->
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <Grid ColumnDefinitions="1*,2*,3*" VerticalOptions="CenterAndExpand">
+                  <Label Grid.Column="0" Text="{Binding Id}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start"/>
+                  <Label Grid.Column="2" Text="{Binding Code}" HorizontalOptions="Center"/>
+                </Grid>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
+      </ListView>
+
+      <ActivityIndicator Scale="0.7"
+                           IsVisible="{Binding IsVisibleIndicator}" 
+                           IsRunning="{Binding IsVisibleIndicator}" 
+                           Color="{DynamicResource ActivityIndicator}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+      </Grid.GestureRecognizers>
+    </Grid>
+
+
+    <!--Tab menu-->
+    <Grid Grid.Row="2"
+            VerticalOptions="FillAndExpand"
+            IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
+            HorizontalOptions="Fill"
+            Margin="0,0,0,0"
+            ColumnDefinitions="1*,1*,1*"
+            Background="{DynamicResource h_tabmenu_background}">
+
+      <Button Grid.Column="0"
+                 Text="{translate:Translate Back}"
+                 TextColor="Black"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"
+                 Margin="20,0,0,0"
+                 Command="{Binding BackClick}"
+                 BackgroundColor="{DynamicResource h_tabmenu_button_background}"/>
+
+      <Button Grid.Column="2"
+              Text="{translate:Translate AddProduct}"
+                BackgroundColor="{DynamicResource h_tabmenu_button_background}"
+                VerticalOptions="Center"
+                Margin="0,0,0,0"
+                 TextColor="Black"
+                Command="{Binding AddProductClick}"
+                HorizontalOptions="EndAndExpand"/>
+
+    </Grid>
+
+    <Grid.GestureRecognizers>
+      <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+    </Grid.GestureRecognizers>
+
+  </Grid>
+</ContentPage>

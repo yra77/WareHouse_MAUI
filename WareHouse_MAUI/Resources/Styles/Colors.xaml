@@ -23,6 +23,8 @@
   <Color x:Key="h_menu_frameImage_Background">Transparent</Color>
   <Color x:Key="h_menu_Label">White</Color>
   <Color x:Key="h_menu_button_background">Transparent</Color>
+  <Color x:Key="h_menu_buttonBorder_background">Transparent</Color>
+  <Color x:Key="h_menu_buttonTextBlack">Black</Color>
   <Color x:Key="h_menu_button_Text">White</Color>
   <Color x:Key="h_menu_line">#E1E1E1</Color>
 
@@ -30,6 +32,8 @@
   <Color x:Key="h_tabmenu_background">White</Color>
   <Color x:Key="h_tabmenu_button_background">Transparent</Color>
 
+
+  <!--QrCodeScan-->
   <Color x:Key="h_qrTextResult">Red</Color>
 
 

@@ -6,6 +6,7 @@ using WareHouse_MAUI.Services.Interfaces;
 using WareHouse_MAUI.Services.AccessRoles;
 using WareHouse_MAUI.Services.AndroidMedia;
 using WareHouse_MAUI.Services.Localization;
+using WareHouse_MAUI.Services.DataServices;
 using WareHouse_MAUI.Services.VerifyService;
 using WareHouse_MAUI.Services.SettingsManager;
 
@@ -37,6 +38,7 @@ namespace WareHouse_MAUI.ViewModels
         protected IRegionManager _regionManager;
         protected IAndroidMedia _androidMedia;
         protected IPrintMessage _printMessage;
+        protected IDataService _dataService;
         protected IAccessRole _accessRole;
         protected IAuth _auth;
 
