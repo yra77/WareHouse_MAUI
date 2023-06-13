@@ -351,6 +351,9 @@
   <data name="Type" xml:space="preserve">
     <value>Тип продукту</value>
   </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Редагувати товар</value>
+  </data>
   <data name="WarehouseNumber" xml:space="preserve">
     <value>Номер складу</value>
   </data>

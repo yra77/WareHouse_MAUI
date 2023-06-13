@@ -8,13 +8,7 @@ using WareHouse_MAUI.Services.DataServices;
 using WareHouse_MAUI.Services.VerifyService;
 using WareHouse_MAUI.Services.SettingsManager;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using Java.Util;
 
 
 namespace WareHouse_MAUI.ViewModels
@@ -31,9 +25,7 @@ namespace WareHouse_MAUI.ViewModels
                              ICheck_AndroidServives checkAndroid,
                              ISettingsManager settingsManager,
                              IVerifyInputService verifyInput,
-                             IChangeThemeService changeTheme,
                              IUnfocusedEntry unfocusedEntry,
-                             IRegionManager regionManager,
                              IAndroidMedia androidMedia,
                              IPrintMessage printMessage,
                              IDataService dataService)
@@ -42,14 +34,11 @@ namespace WareHouse_MAUI.ViewModels
             _navigationService = navigationService;
             _settingsManager = settingsManager;
             _unfocusedEntry = unfocusedEntry;
-            _regionManager = regionManager;
             _checkAndroid = checkAndroid;
             _printMessage = printMessage;
             _androidMedia = androidMedia;
-            _changeTheme = changeTheme;
             _verifyInput = verifyInput;
             _dataService = dataService;
-
         }
 
 
@@ -98,7 +87,7 @@ namespace WareHouse_MAUI.ViewModels
 
         private async void AddProduct()
         {
-          //  await _navigationService.GoBackAsync();
+          await _navigationService.NavigateAsync("AddUpdateProduct");
         }
 
         private void ColumnClick(string columnName)

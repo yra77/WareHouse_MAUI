@@ -27,7 +27,7 @@ public class MainActivity : MauiAppCompatActivity
 
         Inst = this;
 
-        Window.SetSoftInputMode(SoftInput.AdjustNothing);//клавиатура не сдвигает контент
+      //  Window.SetSoftInputMode(SoftInput.AdjustNothing);//клавиатура не сдвигает контент
 
         //WindowInsetsControllerCompat windowInsetsController =
         //    WindowCompat.GetInsetsController(Window, Window.DecorView);

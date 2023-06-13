@@ -32,6 +32,7 @@ namespace WareHouse_MAUI
                              .RegisterForNavigation<QrCodeScan, QrCodeScanViewModel>()
                              .RegisterForNavigation<Settings, SettingsViewModel>()
                              .RegisterForNavigation<Products, ProductsViewModel>()
+                             .RegisterForNavigation<AddUpdateProduct, AddUpdateProductViewModel>()
 
                          .RegisterInstance(SemanticScreenReader.Default);
 

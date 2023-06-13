@@ -7,7 +7,7 @@
   <Color x:Key="HighBackground">#F8F9FA</Color>
   <Color x:Key="ImageBackground">Transparent</Color>
   <Color x:Key="ActivityIndicator">#4285F4</Color>
-
+  <Color x:Key="Placeholder">LightGray</Color>
 
   <!--MainPage-->
   <Color x:Key="m_HighText">Black</Color>
@@ -36,6 +36,38 @@
   <!--QrCodeScan-->
   <Color x:Key="h_qrTextResult">Red</Color>
 
+
+  <!--Products-->
+  <Color x:Key="pt_background">Transparent</Color>
+  <Color x:Key="pt_highText">Black</Color>
+  <Color x:Key="pt_searchBorder">Transparent</Color>
+  <Color x:Key="pt_searchCancelBtn">#C8C8C8</Color>
+  <Color x:Key="pt_searchBackground">White</Color>
+
+  <Color x:Key="pt_listHeaderBackground">Transparent</Color>
+  <Color x:Key="pt_listHeaderBorder">Black</Color>
+
+  <Color x:Key="pt_tabMenuText">Black</Color>
+  <Color x:Key="pt_tabmenu_background">White</Color>
+  <Color x:Key="pt_tabmenu_button_background">Transparent</Color>
+
+  <!--AddProduct-->
+  <Color x:Key="addpt_background">Transparent</Color>
+  <Color x:Key="addpt_highText">Black</Color>
+
+  <Color x:Key="addpt_baseContentBackground">Transparent</Color>
+  <Color x:Key="addpt_textFrameBackground">Transparent</Color>
+  <Color x:Key="addpt_textFrameBorder">Black</Color>
+
+  <Color x:Key="addpt_tabMenuText">Black</Color>
+  <Color x:Key="addpt_tabmenu_background">White</Color>
+  <Color x:Key="addpt_tabmenu_button_background">Transparent</Color>
+
+
+  <!--Material entry-->
+  <Color x:Key="materialentry_SecondText">Gray</Color>
+  <Color x:Key="materialentry_background">Transparent</Color>
+  <Color x:Key="materialentry_border">Gray</Color>
 
 
 

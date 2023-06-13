@@ -351,6 +351,9 @@
   <data name="Type" xml:space="preserve">
     <value>Product type</value>
   </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Update product</value>
+  </data>
   <data name="WarehouseNumber" xml:space="preserve">
     <value>Warehouse number</value>
   </data>

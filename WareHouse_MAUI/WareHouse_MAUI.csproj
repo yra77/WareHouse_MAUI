@@ -44,6 +44,12 @@
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
 
+  <!-- Android -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-android')) != true">
+  <Compile Remove="**\**\*.Android.cs" />
+  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+  
   <ItemGroup>
     <!-- App Icon -->
 <MauiIcon Include="Resources\AppIcon\appicon.png" /> 
@@ -58,7 +64,7 @@
     <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <Compile Remove="Platforms\iOS\**" />
     <Compile Remove="Platforms\MacCatalyst\**" />
@@ -86,6 +92,10 @@
     <None Remove="Resources\Images\strelka.png" />
 	<None Remove="Resources\Images\icon_hamburger.png" />
 	<None Remove="Resources\Images\icon_qrcode.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="Controls\EntryHandle\CustomEntryHandler .Android.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -117,6 +127,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\AddUpdateProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

@@ -763,6 +763,15 @@ namespace WareHouse_MAUI.Resources.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Update product.
+        /// </summary>
+        internal static string UpdateProduct {
+            get {
+                return ResourceManager.GetString("UpdateProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Warehouse number.
         /// </summary>
         internal static string WarehouseNumber {

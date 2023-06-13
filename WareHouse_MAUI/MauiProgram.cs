@@ -3,7 +3,7 @@
 using WareHouse_MAUI.Controls;
 using BarcodeScanner.Mobile;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-
+using WareHouse_MAUI.Controls.EntryHandle;
 
 namespace WareHouse_MAUI
 {
@@ -17,7 +17,9 @@ namespace WareHouse_MAUI
                 .ConfigureMauiHandlers((handlers) =>
                 {
 #if ANDROID
-                    handlers.AddCompatibilityRenderer(typeof(MyEntry), typeof(WareHouse_MAUI.Platforms.Android.Services.My_Entry));
+                    handlers.AddCompatibilityRenderer(typeof(MyEntry), typeof(Platforms.Android.Services.My_Entry));
+                    handlers.AddCompatibilityRenderer(typeof(EntryVerify), typeof(Platforms.Android.Services.EntryVerify));
+                    handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
 #endif
                 })
                 .ConfigureFonts(fonts =>

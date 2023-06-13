@@ -9,7 +9,7 @@
              BackgroundColor="{DynamicResource HighBackground}">
 
 
-  <Grid BackgroundColor="{DynamicResource HighBackground}"
+  <Grid BackgroundColor="{DynamicResource pt_background}"
           TranslationX="{Binding TraslateX}"
           IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
           Scale="{Binding ScaleBaseContent}"
@@ -19,30 +19,30 @@
 
     <Grid Grid.Row="0"
           VerticalOptions="Fill"
-          BackgroundColor="{DynamicResource h_basecontent_background}"
+          BackgroundColor="{DynamicResource pt_background}"
           RowDefinitions="1*,1*">
 
       <Label Grid.Row="0"
            Text="{translate:Translate Products}"
            HorizontalOptions="Center"
            VerticalOptions="Start"
-           TextColor="Black"
+           TextColor="{DynamicResource pt_highText}"
            FontAttributes="Bold"
            FontSize="Medium"/>
 
       <Frame Grid.Row="1"
              Padding="0"
              HorizontalOptions="Center"
-             BorderColor="Transparent"
+             BorderColor="{DynamicResource pt_searchBorder}"
              CornerRadius="0">
       <SearchBar Text="{Binding SearchText}"
                  Placeholder="{translate:Translate Search}"
-                 PlaceholderColor="LightGray"
+                 PlaceholderColor="{DynamicResource Placeholder}"
                  HorizontalOptions="Start"
                  VerticalOptions="Center"
-                 BackgroundColor="{DynamicResource White}"
+                 BackgroundColor="{DynamicResource pt_searchBackground}"
                  Keyboard="Text" 
-                 CancelButtonColor="{DynamicResource Gray200}"
+                 CancelButtonColor="{DynamicResource pt_searchCancelBtn}"
                  FontSize="14"
                  FontFamily="OpenSansRegular"/>
       </Frame>
@@ -55,7 +55,7 @@
 
     <Grid Grid.Row="1"
           VerticalOptions="Fill"
-          BackgroundColor="{DynamicResource h_basecontent_background}">
+          BackgroundColor="{DynamicResource pt_background}">
 
       <ListView Margin="10,10,10,10"
               x:Name="listview"
@@ -77,10 +77,10 @@
               Margin="0,0,0,20">
             
             <Frame Grid.Column="0"
-                 Padding="0"
+                 Padding="5"
                  CornerRadius="0"
-                 BorderColor="Black"
-                 BackgroundColor="Transparent">
+                 BorderColor="{DynamicResource pt_listHeaderBorder}"
+                 BackgroundColor="{DynamicResource pt_listHeaderBackground}">
               <Label Text="Id" HorizontalOptions="Center" FontAttributes="Bold"/>
               <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Column}"
@@ -89,10 +89,10 @@
             </Frame>
             
             <Frame Grid.Column="1"
-                 Padding="0"
+                 Padding="5"
                  CornerRadius="0"
-                 BorderColor="Black"
-                 BackgroundColor="Transparent">
+                 BorderColor="{DynamicResource pt_listHeaderBorder}"
+                 BackgroundColor="{DynamicResource pt_listHeaderBackground}">
               <Label Text="{translate:Translate Name}" HorizontalOptions="Center" FontAttributes="Bold"/>
               <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Column}"
@@ -101,10 +101,10 @@
             </Frame>
               
             <Frame Grid.Column="2"
-                 Padding="0"
+                 Padding="5"
                  CornerRadius="0"
-                 BorderColor="Black"
-                 BackgroundColor="Transparent">
+                 BorderColor="{DynamicResource pt_listHeaderBorder}"
+                 BackgroundColor="{DynamicResource pt_listHeaderBackground}">
               <Label Text="{translate:Translate Code}" HorizontalOptions="Center" FontAttributes="Bold"/>
               <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Column}"
@@ -146,31 +146,31 @@
 
 
     <!--Tab menu-->
-    <Grid Grid.Row="2"
+      <Grid Grid.Row="2"
             VerticalOptions="FillAndExpand"
             IgnoreSafeArea="{OnPlatform Android=False, iOS=True}"
             HorizontalOptions="Fill"
             Margin="0,0,0,0"
             ColumnDefinitions="1*,1*,1*"
-            Background="{DynamicResource h_tabmenu_background}">
+            Background="{DynamicResource pt_tabmenu_background}">
 
       <Button Grid.Column="0"
-                 Text="{translate:Translate Back}"
-                 TextColor="Black"
-                 HorizontalOptions="Start"
-                 VerticalOptions="Center"
-                 Margin="20,0,0,0"
-                 Command="{Binding BackClick}"
-                 BackgroundColor="{DynamicResource h_tabmenu_button_background}"/>
+              Text="{translate:Translate Back}"
+              TextColor="{DynamicResource pt_tabMenuText}"
+              HorizontalOptions="Start"
+              VerticalOptions="Center"
+              Margin="20,0,0,0"
+              Command="{Binding BackClick}"
+              BackgroundColor="{DynamicResource pt_tabmenu_button_background}"/>
 
       <Button Grid.Column="2"
               Text="{translate:Translate AddProduct}"
-                BackgroundColor="{DynamicResource h_tabmenu_button_background}"
-                VerticalOptions="Center"
-                Margin="0,0,0,0"
-                 TextColor="Black"
-                Command="{Binding AddProductClick}"
-                HorizontalOptions="EndAndExpand"/>
+              BackgroundColor="{DynamicResource pt_tabmenu_button_background}"
+              VerticalOptions="Center"
+              Margin="0,0,0,0"
+              TextColor="{DynamicResource pt_tabMenuText}"
+              Command="{Binding AddProductClick}"
+              HorizontalOptions="EndAndExpand"/>
 
     </Grid>
 
