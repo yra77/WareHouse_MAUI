@@ -12,7 +12,7 @@ namespace WareHouse_MAUI.Models
         public int? Quantity { get; set; } = 0;
         public int? Price { get; set; } = 0;
         public int? ShipperId { get; set; } = 0;
-        public string Code { get; set; } = "0000000000000000";
+        public string? Code { get; set; } = "0000000000000000";
         public int WarehouseNumber { get; set; } = 0;
         public DateTime DateArrival { get; set; } = DateTime.UtcNow;
     }

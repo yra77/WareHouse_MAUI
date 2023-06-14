@@ -79,7 +79,8 @@ namespace WareHouse_MAUI.Controls.EntryHandle
 
         protected override void DisconnectHandler(GridLayout platformView)
         {
-            // Perform any native view cleanup here
+            _textedit.TextChanged -= Textedit_TextChanged;
+            _textedit.FocusChange -= Textedit_FocusChange;
             platformView.Dispose();
             base.DisconnectHandler(platformView);
         }
@@ -151,6 +152,7 @@ namespace WareHouse_MAUI.Controls.EntryHandle
                 TextChanged();
                 CheckData();
                 _entryBase.IsValid = _isValid;
+                _entryBase.InputText = _textedit.Text;
             }
             else
             {

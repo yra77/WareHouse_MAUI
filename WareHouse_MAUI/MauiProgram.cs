@@ -1,9 +1,10 @@
 ﻿
 
+using WareHouse_MAUI.Controls.EntryHandle;
 using WareHouse_MAUI.Controls;
 using BarcodeScanner.Mobile;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-using WareHouse_MAUI.Controls.EntryHandle;
+
 
 namespace WareHouse_MAUI
 {

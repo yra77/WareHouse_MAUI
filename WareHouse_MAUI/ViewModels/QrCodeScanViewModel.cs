@@ -12,6 +12,7 @@ using WareHouse_MAUI.Services.SettingsManager;
 using BarcodeScanner.Mobile;
 using System.Collections.ObjectModel;
 
+
 namespace WareHouse_MAUI.ViewModels
 {
     internal class QrCodeScanViewModel : BaseViewModel, INavigatedAware

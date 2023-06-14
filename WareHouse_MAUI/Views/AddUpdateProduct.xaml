@@ -57,7 +57,7 @@
         <VerticalStackLayout BackgroundColor="{DynamicResource addpt_textFrameBackground}"
                              Margin="0,0,0,10">
 
-          <material:CustomEntry InputText="{Binding Product.TypeId}"
+          <material:CustomEntry InputText="{Binding Product.TypeId, Mode=TwoWay}"
                               LabelName="{translate:Translate Type}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
@@ -81,7 +81,7 @@
         <VerticalStackLayout BackgroundColor="{DynamicResource addpt_textFrameBackground}"
                              Margin="0,0,0,10">
 
-          <material:CustomEntry InputText="{Binding Product.CategoryId}"
+          <material:CustomEntry InputText="{Binding Product.CategoryId, Mode=TwoWay}"
                               LabelName="{translate:Translate Category}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
@@ -100,9 +100,9 @@
                   HorizontalOptions="FillAndExpand"/>
 
         </VerticalStackLayout>
-      
 
-        <material:CustomEntry InputText="{Binding Product.Quantity}"
+
+        <material:CustomEntry InputText="{Binding Product.Quantity, Mode=TwoWay}"
                               LabelName="{translate:Translate Quantity}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
@@ -119,8 +119,8 @@
 
         <VerticalStackLayout BackgroundColor="{DynamicResource addpt_textFrameBackground}"
                              Margin="0,0,0,10">
-          
-        <material:CustomEntry InputText="{Binding Product.ShipperId}"
+
+          <material:CustomEntry InputText="{Binding Product.ShipperId, Mode=TwoWay}"
                               LabelName="{translate:Translate Shipper}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
@@ -143,7 +143,7 @@
         <VerticalStackLayout BackgroundColor="{DynamicResource addpt_textFrameBackground}"
                              Margin="0,0,0,10">
 
-          <material:CustomEntry InputText="{Binding Product.Code}"
+          <material:CustomEntry InputText="{Binding Product.Code, Mode=TwoWay}"
                               LabelName="{translate:Translate Code}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
@@ -152,30 +152,32 @@
 
           <Button Text="QR code"
                   Margin="0,10,0,0"
-                  HorizontalOptions="FillAndExpand"/>
+                  HorizontalOptions="FillAndExpand"
+                  Command="{Binding QrCodeBtn}"/>
 
         </VerticalStackLayout>
 
-        <material:CustomEntry InputText="{Binding Product.WarehouseNumber}"
+        <material:CustomEntry InputText="{Binding Product.WarehouseNumber, Mode=TwoWay}"
                               LabelName="{translate:Translate WarehouseNumber}" 
                               SelectedType="digit"
                               IsValid="{Binding IsValidInput, Mode=TwoWay}"
                               LabelColor="{DynamicResource m_secondLabel}"
                               BorderColor="{DynamicResource m_secondLabel}"/>
     
+      <VerticalStackLayout.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
+      </VerticalStackLayout.GestureRecognizers>
+    </VerticalStackLayout>
+    </ScrollView>
 
-      <ActivityIndicator Scale="0.7"
+
+    <ActivityIndicator Grid.Row="1" Scale="0.7"
                            IsVisible="{Binding IsVisibleIndicator}" 
                            IsRunning="{Binding IsVisibleIndicator}" 
                            Color="{DynamicResource ActivityIndicator}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"/>
 
-      <VerticalStackLayout.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding UnfocusedCommand}"/>
-      </VerticalStackLayout.GestureRecognizers>
-    </VerticalStackLayout>
-    </ScrollView>
 
     <!--Tab menu-->
     <Grid Grid.Row="2"

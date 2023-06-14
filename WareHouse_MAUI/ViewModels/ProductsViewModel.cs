@@ -130,7 +130,7 @@ namespace WareHouse_MAUI.ViewModels
 
         #region interface implement
 
-        protected override void OnPropertyChanged(PropertyChangedEventArgs args)
+        protected override async void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
 
@@ -139,7 +139,12 @@ namespace WareHouse_MAUI.ViewModels
                 case "SelectedItem":
                    if(SelectedItem != null)
                     {
-                        
+                        var parameters = new NavigationParameters
+                                {
+                                  { "item", SelectedItem}
+                                };
+                      await  _navigationService.NavigateAsync("AddUpdateProduct", parameters);
+                        SelectedItem = null;
                     }
                     break;
 

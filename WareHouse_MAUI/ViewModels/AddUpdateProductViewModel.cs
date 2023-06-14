@@ -130,6 +130,7 @@ namespace WareHouse_MAUI.ViewModels
         public DelegateCommand AddProductClick => new DelegateCommand(AddProduct);
         public DelegateCommand DeleteClick => new DelegateCommand(Delete);
         public DelegateCommand AddNewShipper => new DelegateCommand(AddShipper);
+        public DelegateCommand QrCodeBtn => new DelegateCommand(AddQrCode);
         public DelegateCommand<string> AddNewCategoryType => new DelegateCommand<string>(Add_TypeCategory);
 
         #endregion
@@ -142,6 +143,11 @@ namespace WareHouse_MAUI.ViewModels
                                   {"entity", model }
                                 };
             await _navigationService.NavigateAsync("AddTypeCategory", parameters);
+        }
+
+        private async void AddQrCode()
+        {
+            await _navigationService.NavigateAsync("QrCodeScan");
         }
 
         private async void AddShipper()
@@ -265,7 +271,7 @@ namespace WareHouse_MAUI.ViewModels
 
             if (parameters.ContainsKey("item"))
             {
-                Product = parameters.GetValue<Product>("Product");
+                Product = parameters.GetValue<Product>("item");
 
                 AddUpdateText = _localizationManager["UpdateProduct"];
                 IsDeleteVisible = true;

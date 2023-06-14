@@ -46,6 +46,7 @@
 
   <Color x:Key="pt_listHeaderBackground">Transparent</Color>
   <Color x:Key="pt_listHeaderBorder">Black</Color>
+  <Color x:Key="pt_listViewCell">Transparent</Color>
 
   <Color x:Key="pt_tabMenuText">Black</Color>
   <Color x:Key="pt_tabmenu_background">White</Color>
