@@ -33,6 +33,8 @@ namespace WareHouse_MAUI
                              .RegisterForNavigation<Settings, SettingsViewModel>()
                              .RegisterForNavigation<Products, ProductsViewModel>()
                              .RegisterForNavigation<AddUpdateProduct, AddUpdateProductViewModel>()
+                             .RegisterForNavigation<Shippers, ShippersViewModel>()
+                             .RegisterForNavigation<AddUpdateShipper, AddUpdateShipperViewModel>()
 
                          .RegisterInstance(SemanticScreenReader.Default);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WareHouse_MAUI.Views.Products"
+             x:Class="WareHouse_MAUI.Views.Shippers"
              xmlns:prism="http://prismlibrary.com"
              xmlns:convert="clr-namespace:WareHouse_MAUI.Converters"
              xmlns:translate="clr-namespace:WareHouse_MAUI.Services.Localization"
@@ -19,7 +19,7 @@
           RowDefinitions="1*,1*">
 
       <Label Grid.Row="0"
-           Text="{translate:Translate Products}"
+           Text="{translate:Translate Shippers}"
            HorizontalOptions="Center"
            VerticalOptions="Start"
            TextColor="{DynamicResource pt_highText}"
@@ -31,7 +31,7 @@
              HorizontalOptions="Center"
              BorderColor="{DynamicResource pt_searchBorder}"
              CornerRadius="0">
-      <SearchBar Text="{Binding SearchText}"
+        <SearchBar Text="{Binding SearchText}"
                  Placeholder="{translate:Translate Search}"
                  PlaceholderColor="{DynamicResource Placeholder}"
                  HorizontalOptions="Start"
@@ -63,14 +63,14 @@
               RefreshControlColor="{DynamicResource ActivityIndicator}"
               RefreshCommand="{Binding RefreshList}"
               IsRefreshing="{Binding IsRefresh}"
-              ItemsSource="{Binding ProductList}">
+              ItemsSource="{Binding ListShipper}">
 
         <!--Header-->
         <ListView.Header>
-          
-          <Grid ColumnDefinitions="1*,2*,3*"
+
+          <Grid ColumnDefinitions="1*,3*,3*"
               Margin="0,0,0,20">
-            
+
             <Frame Grid.Column="0"
                  Padding="5"
                  CornerRadius="0"
@@ -82,7 +82,7 @@
                                       CommandParameter="Id"/>
               </Frame.GestureRecognizers>
             </Frame>
-            
+
             <Frame Grid.Column="1"
                  Padding="5"
                  CornerRadius="0"
@@ -94,19 +94,19 @@
                                       CommandParameter="Name"/>
               </Frame.GestureRecognizers>
             </Frame>
-              
+
             <Frame Grid.Column="2"
                  Padding="5"
                  CornerRadius="0"
                  BorderColor="{DynamicResource pt_listHeaderBorder}"
                  BackgroundColor="{DynamicResource pt_listHeaderBackground}">
-              <Label Text="{translate:Translate Code}" HorizontalOptions="Center" FontAttributes="Bold"/>
+              <Label Text="{translate:Translate Phone}" HorizontalOptions="Center" FontAttributes="Bold"/>
               <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Column}"
-                                      CommandParameter="Code"/>
+                                      CommandParameter="Phone"/>
               </Frame.GestureRecognizers>
             </Frame>
-              
+
           </Grid>
         </ListView.Header>
 
@@ -115,21 +115,21 @@
           <DataTemplate>
             <ViewCell>
               <ViewCell.View>
-
-                <Grid ColumnDefinitions="1*,2*,3*"
+                
+                <Grid ColumnDefinitions="1*,3*,3*"
                       VerticalOptions="CenterAndExpand">
-
+                  
                   <Label Grid.Column="0" Text="{Binding Id}" HorizontalOptions="Center" VerticalOptions="Center"/>
                   <Label Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start"/>
-                  <Label Grid.Column="2" Text="{Binding Code}" HorizontalOptions="Center"/>
-
+                  <Label Grid.Column="2" Text="{Binding Phone}" HorizontalOptions="Center"/>
+                  
                   <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BindingContext.ItemSelect, Source={x:Reference listview}}"
                                           CommandParameter="{Binding }"/>
                   </Grid.GestureRecognizers>
-
+                  
                 </Grid>
-
+                
               </ViewCell.View>
             </ViewCell>
           </DataTemplate>
@@ -151,7 +151,7 @@
 
 
     <!--Tab menu-->
-      <Grid Grid.Row="2"
+    <Grid Grid.Row="2"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="Fill"
             Margin="0,0,0,0"
@@ -168,12 +168,12 @@
               BackgroundColor="{DynamicResource pt_tabmenu_button_background}"/>
 
       <Button Grid.Column="2"
-              Text="{translate:Translate AddProduct}"
+              Text="{translate:Translate AddShipper}"
               BackgroundColor="{DynamicResource pt_tabmenu_button_background}"
               VerticalOptions="Center"
               Margin="0,0,0,0"
               TextColor="{DynamicResource pt_tabMenuText}"
-              Command="{Binding AddProductClick}"
+              Command="{Binding AddShipperClick}"
               HorizontalOptions="EndAndExpand"/>
 
     </Grid>

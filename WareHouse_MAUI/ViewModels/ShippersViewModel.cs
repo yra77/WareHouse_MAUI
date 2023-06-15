@@ -10,17 +10,16 @@ using WareHouse_MAUI.Services.SettingsManager;
 
 using System.ComponentModel;
 
-
 namespace WareHouse_MAUI.ViewModels
 {
-    internal class ProductsViewModel : BaseViewModel, INavigatedAware
+    internal class ShippersViewModel : BaseViewModel, INavigationAware
     {
 
 
-        private List<Product> _productList2;
+        private List<Shipper> _shipperList2;
 
 
-        public ProductsViewModel(ILocalizationManager localizationManager,
+        public ShippersViewModel(ILocalizationManager localizationManager,
                              INavigationService navigationService,
                              ICheck_AndroidServives checkAndroid,
                              ISettingsManager settingsManager,
@@ -44,11 +43,19 @@ namespace WareHouse_MAUI.ViewModels
 
         #region property
 
-        private List<Product> _productList;
-        public List<Product> ProductList
+        private List<Shipper> _listShipper;
+        public List<Shipper> ListShipper
         {
-            get => _productList;
-            set => SetProperty(ref _productList, value);
+            get => _listShipper;
+            set => SetProperty(ref _listShipper, value);
+        }
+
+
+        private bool _isValidInput;
+        public bool IsValidInput
+        {
+            get => _isValidInput;
+            set => SetProperty(ref _isValidInput, value);
         }
 
 
@@ -70,26 +77,26 @@ namespace WareHouse_MAUI.ViewModels
 
         public DelegateCommand UnfocusedCommand => new DelegateCommand(Unfocused_Entry);
         public DelegateCommand BackClick => new DelegateCommand(GoBack);
-        public DelegateCommand AddProductClick => new DelegateCommand(AddProduct);
+        public DelegateCommand AddShipperClick => new DelegateCommand(AddShipper);
         public DelegateCommand RefreshList => new DelegateCommand(Refresh_List);
         public DelegateCommand<string> Column => new DelegateCommand<string>(ColumnClick);
-        public DelegateCommand<Product> ItemSelect => new DelegateCommand<Product>(ItemSelectClick);
+        public DelegateCommand<Shipper> ItemSelect => new DelegateCommand<Shipper>(ItemSelectClick);
 
         #endregion
 
 
-        private async void ItemSelectClick(Product obj)
+        private async void ItemSelectClick(Shipper obj)
         {
             var parameters = new NavigationParameters
                                 {
                                   { "item", obj}
                                 };
-            await _navigationService.NavigateAsync("AddUpdateProduct", parameters);
+            await _navigationService.NavigateAsync("AddUpdateShipper", parameters);
         }
 
-        private async void AddProduct()
+        private async void AddShipper()
         {
-          await _navigationService.NavigateAsync("AddUpdateProduct");
+            await _navigationService.NavigateAsync("AddUpdateShipper");
         }
 
         private void ColumnClick(string columnName)
@@ -97,25 +104,25 @@ namespace WareHouse_MAUI.ViewModels
             switch (columnName)
             {
                 case "Id":
-                    ProductList = ProductList.AsParallel().OrderBy(x => x.Id).ToList();
+                    ListShipper = ListShipper.AsParallel().OrderBy(x => x.Id).ToList();
                     break;
                 case "Name":
-                    ProductList = ProductList.AsParallel().OrderBy(x => x.Name).ToList();
+                    ListShipper = ListShipper.AsParallel().OrderBy(x => x.Name).ToList();
                     break;
-                case "Code":
-                    ProductList = ProductList.AsParallel().OrderBy(x => x.Code).ToList();
+                case "Phone":
+                    ListShipper = ListShipper.AsParallel().OrderBy(x => x.Phone).ToList();
                     break;
             }
-            RaisePropertyChanged("ProductList");
+            RaisePropertyChanged("ListShipper");
         }
 
         private async void Refresh_List()
         {
-           // IsRefresh = true;
-            var list = await _dataService.GetDataAsync<Product>();
-            ProductList = new List<Product>(list);
-            _productList2 = new List<Product>(list);
-            RaisePropertyChanged("ProductList");
+            // IsRefresh = true;
+            var list = await _dataService.GetDataAsync<Shipper>();
+            ListShipper = new List<Shipper>(list);
+            _shipperList2 = new List<Shipper>(list);
+            RaisePropertyChanged("ListShipper");
             IsRefresh = false;
         }
 
@@ -144,16 +151,16 @@ namespace WareHouse_MAUI.ViewModels
                     {
                         if (SearchText.Length > 0)
                         {
-                            ProductList = _productList2.AsParallel().Where(item => item.Name.ToLower().Contains(SearchText.ToLower())
+                            ListShipper = _shipperList2.AsParallel().Where(item => item.Name.ToLower().Contains(SearchText.ToLower())
                                             || item.Id.ToString().Contains(SearchText)
-                                            || item.Code.Contains(SearchText)).ToList();
+                                            || item.Phone.Contains(SearchText)).ToList();
                         }
                         else
                         {
-                            ProductList = _productList2;
+                            ListShipper = _shipperList2;
                         }
 
-                        RaisePropertyChanged("ProductList");
+                        RaisePropertyChanged("ListShipper");
                     }
                     break;
             }
@@ -166,13 +173,12 @@ namespace WareHouse_MAUI.ViewModels
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-           // Unfocused_Entry();
+            // Unfocused_Entry();
             SearchText = "";
             IsVisibleIndicator = true;
             Refresh_List();
             IsVisibleIndicator = false;
         }
-
         #endregion
     }
 }
